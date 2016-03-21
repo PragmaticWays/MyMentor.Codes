@@ -2,7 +2,7 @@
 
 // if user logged on, go to homepage
 if(isset($_SESSION['id'])) {
-    header('Location: /mymentor.codes/');
+    header('Location: ../');
 }
 // define error vars
 $user_taken_error = false;
@@ -19,7 +19,7 @@ if(isset($_POST['register'])) {
     
     // include database connection
     $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/mymentor.codes/config/connect.php";
+    $path .= "/config/connect.php";
     include_once($path);
     
     // sanatize user input
@@ -71,7 +71,7 @@ if(isset($_POST['register'])) {
         
         // if no existing account and input is good, store in database and proceed to home, which redirects to login.
         mysqli_query($conn, $sql_store);
-        header('Location: /mymentor.codes/');
+        header('Location: ../');
     }   
 }
 
@@ -92,13 +92,8 @@ if(isset($_POST['register'])) {
     <div class="wrapper">
         <!-- include top status bar and navigation bar -->
         <?php
-            $path = $_SERVER['DOCUMENT_ROOT'];
-            $path .= "/mymentor.codes/resources/include/topBar.php";
-            include_once($path);
-    
-            $path = $_SERVER['DOCUMENT_ROOT'];
-            $path .= "/mymentor.codes/resources/include/nav.php";
-            include_once($path);
+            include('../resources/include/topBar.php');
+        include('../resources/include/nav.php')
         ?>
         
         
@@ -189,9 +184,7 @@ if(isset($_POST['register'])) {
     
     <!-- include footer -->
     <?php
-        $path = $_SERVER['DOCUMENT_ROOT'];
-        $path .= "/mymentor.codes/resources/include/footer.php";
-        include_once($path);
+        include('../resources/include/footer.php')
     ?>
         
 </body>
