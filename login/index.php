@@ -5,7 +5,7 @@ session_start();
 if (isset($_POST['login'])) {
     
     $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/mymentor.codes/config/connect.php";
+    $path .= "/config/connect.php";
     include_once($path);
     
     $username = strip_tags($_POST['user']);
@@ -25,7 +25,7 @@ if (isset($_POST['login'])) {
     $query = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($query);
     $id = $row['id'];
-    echo $id;
+    // echo $id;
     $db_password = $row['password'];
     
     
@@ -33,8 +33,7 @@ if (isset($_POST['login'])) {
     if ($password == $db_password) {
         $_SESSION['username'] = $username;
         $_SESSION['id'] = $id;
-        $path = $_SERVER['DOCUMENT_ROOT'];
-        $path .= "/mymentor.codes/";
+
         header("Location: ../" );
     } else {
        $cred_error = "";
@@ -60,13 +59,8 @@ if (isset($_POST['login'])) {
     <div class="wrapper">
         
             <?php
-        $path = $_SERVER['DOCUMENT_ROOT'];
-        $path .= "/mymentor.codes/resources/include/topBar.php";
-        include_once($path);
-    
-        $path = $_SERVER['DOCUMENT_ROOT'];
-        $path .= "/mymentor.codes/resources/include/nav.php";
-        include_once($path);
+        include('../resources/include/topBar.php');
+        include('../resources/include/nav.php');
     ?>
 
     <div class="container" style="margin-top: 100px;">
@@ -93,9 +87,7 @@ if (isset($_POST['login'])) {
     
     
         <?php
-        $path = $_SERVER['DOCUMENT_ROOT'];
-        $path .= "/mymentor.codes/resources/include/footer.php";
-        include_once($path);
+        include('../resources/include/footer.php');
     ?>
 
 </body>
