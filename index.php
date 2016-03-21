@@ -3,7 +3,7 @@
 session_start();
 
 if(!isset($_SESSION['id'])) {
-    header("Location: /mymentor.codes/login/");
+    header("Location: ./login/");
 }
 ?>
 
@@ -20,15 +20,11 @@ if(!isset($_SESSION['id'])) {
 <body>
     <div class="wrapper">
         
-        <?php include 'resources/include/topBar.php'; ?>
-        <?php include 'resources/include/nav.php'; ?>
+        <?php include './resources/include/topBar.php'; ?>
+        <?php include './resources/include/nav.php'; ?>
     
     </div>
     
-    <?php
-        $path = $_SERVER['DOCUMENT_ROOT'];
-        $path .= "/mymentor.codes/resources/include/footer.php";
-        include_once($path);
-    ?>
+    <?php include './resources/include/footer.php'; ?>
 </body>
 </html>
