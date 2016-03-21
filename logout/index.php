@@ -12,13 +12,8 @@ session_destroy();
     <title>Logout | MyMentor.Codes</title>
 
     <?php
-        $path = $_SERVER['DOCUMENT_ROOT'];
-        $path .= "/mymentor.codes/resources/include/topBar.php";
-        include_once($path);
-    
-        $path = $_SERVER['DOCUMENT_ROOT'];
-        $path .= "/mymentor.codes/resources/include/nav.php";
-        include_once($path);
+        include('../resources/include/topBar.php');
+    include('../resources/include/nav.php');
     ?>
 
             <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
@@ -30,6 +25,11 @@ session_destroy();
     <meta http-equiv="refresh" content="1;url=../login" />
     
     <h1>Logging Out...</h1>
+    
+    
+     <?php
+        include('../resources/include/footer.php');
+    ?>
 
 </body>
 </html>
