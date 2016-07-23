@@ -1,14 +1,11 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "1fatlard";
-$dbname = "mymentorcodes";
+//DB Params
+define("DB_HOST", "");
+define("DB_USER", "");
+define("DB_PASS", "");
+define("DB_NAME", "");
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+define("SITE_TITLE", "MyMentor.Codes");
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-?>
+// Paths
+define ('BASE_RUI', 'http://'.$_SERVER['SERVER_NAME'].'/mymentor.codes/');
