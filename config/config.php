@@ -8,4 +8,4 @@ define("DB_NAME", "");
 define("SITE_TITLE", "MyMentor.Codes");
 
 // Paths
-define ('BASE_RUI', 'http://'.$_SERVER['SERVER_NAME'].'/mymentor.codes/');
+define ('BASE_URI', 'http://'.$_SERVER['SERVER_NAME'].'/mymentor.codes/');
