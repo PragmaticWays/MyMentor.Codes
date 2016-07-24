@@ -24,29 +24,48 @@ function redirect($page = FALSE, $message = NULL, $message_type = NULL) {
 }
 
 // Display message (error or success)
-	function displayMessage() {
-		if (!empty($_SESSION['message'])) {
+function displayMessage() {
+	if (!empty($_SESSION['message'])) {
 			
-			// Assign message var
-			$message = $_SESSION['message'];
+		// Assign message var
+		$message = $_SESSION['message'];
 			
-			if (!empty($_SESSION['message_type'])) {
+		if (!empty($_SESSION['message_type'])) {
 				
-				// Assign type var
-				$message_type = $_SESSION['message_type'];
+			// Assign type var
+			$message_type = $_SESSION['message_type'];
 				
-				// Create output
-				if ($message_type == 'error') {
-					echo '<div class="alert alert-danger">' . $message . '</div>';
-				} else {
-					echo '<div class="alert alert-success">' . $message . '</div>';
-				}
+			// Create output
+			if ($message_type == 'error') {
+				echo '<div class="alert alert-danger">' . $message . '</div>';
+			} else {
+				echo '<div class="alert alert-success">' . $message . '</div>';
 			}
-			
-			// Unset message
-			unset($_SESSION['message']);
-			unset($_SESSION['message_type']);
-		} else {
-			echo '';
 		}
+			
+		// Unset message
+		unset($_SESSION['message']);
+		unset($_SESSION['message_type']);
+	} else {
+		echo '';
 	}
+}
+
+// Check if user is logged in 
+function isLoggedIn() {
+	if (isset($_SESSION['is_logged_in'])) {
+		return true;
+	} else {
+		return false;
+	}
+}	
+
+// Get user info for logged on users
+function getUser() {
+	$userArray = array();
+	$userArray['user_id'] = $_SESSION['user_id']; 
+	$userArray['username'] = $_SESSION['username']; 
+	$userArray['name'] = $_SESSION['name']; 
+	return $userArray;
+}
+	

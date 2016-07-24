@@ -28,8 +28,8 @@
 	</ul>
 	<h3>MyMentor.Codes Stats</h3>
 	<ul>
-		<li>Total Users: <strong><?php echo $totalUsers; ?></strong></li>
-		<li>Total Topics: <strong><?php echo $totalTopics; ?></strong></li>
+		<li>Total Users: <strong><?php echo $totalUsers; /* found in '/libraries/User.php' */?></strong></li>
+		<li>Total Topics: <strong><?php echo $totalTopics; /* found in '/libraries/Topic.php' */?></strong></li>
 	</ul>
 <?php include('includes/footer.php'); ?>
 					

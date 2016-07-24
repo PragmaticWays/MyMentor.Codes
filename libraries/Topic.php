@@ -83,13 +83,6 @@ class Topic {
 		return $results;
 	}
 	
-	// Get statistics - total users
-	public function getTotalUsers() {
-		$this->db->query('SELECT * FROM users');
-		$rows = $this->db->resultset();
-		return $this->db->rowCount();
-	}
-	
 	// Get statistics - total topics
 	public function getTotalTopics() {
 		$this->db->query('SELECT * FROM topics');

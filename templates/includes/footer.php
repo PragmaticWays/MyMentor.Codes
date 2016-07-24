@@ -7,7 +7,17 @@
 					<!-- Login Form -->
 					<div class="block">
 						<h3>Login</h3>
-						<form role="form">
+						
+						<?php if(isloggedIn()) : ?>
+							<div class="userdata">
+								<?php echo getUser()['username']; ?>
+							</div>
+							<br>
+							<form role="form" method="post" action="logout.php">
+								<input type="submit" name="do_logout" class="btn btn-primary" value="Logout">
+							</form>
+						<?php else : ?>
+						<form role="form" method="post" action="login.php">
 							<div class="form-group">
 								<label>Username</label>
 								<input name="username" type="text" class="form-control" placeholder="Username"></input>
@@ -18,6 +28,8 @@
 							</div>
 							<button name="do_login" type="submit" class="btn btn-primary">Login</button> <a class="btn btn-default" href="register.php">Create Account</a>
 						</form>
+						<?php endif; ?>
+						
 					</div>
 					<!-- Categories -->
 					<div class="block">

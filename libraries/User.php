@@ -63,4 +63,48 @@ class User {
 			redirect('register.php', 'Invalid File Type.', 'error');
 		}
 	}
+	
+	// User login
+	public function login($username, $password) {
+		$this->db->query("SELECT * FROM users WHERE username = :username AND password = :password");
+		
+		// Bind values
+		$this->db->bind(':username', $username);
+		$this->db->bind(':password', $password);
+		
+		// Assign row
+		$row = $this->db->single();
+		
+		// Check rows
+		if ($this->db->rowCount() > 0) {
+			$this->setUserData($row);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	// Set user data
+	private function setUserData($row) {
+		$_SESSION['is_logged_in'] = true;
+		$_SESSION['user_id'] = $row->id;
+		$_SESSION['username'] = $row->username;
+		$_SESSION['name'] = $row->name;
+	}
+	
+	// User logout
+	public function logout() {
+		unset($_SESSION['is_logged_in']);
+		unset($_SESSION['user_id']);
+		unset($_SESSION['username']);
+		unset($_SESSION['name']);
+		return true;
+	}
+	
+	// Get statistics - total users
+	public function getTotalUsers() {
+		$this->db->query('SELECT * FROM users');
+		$rows = $this->db->resultset();
+		return $this->db->rowCount();
+	}
 }
