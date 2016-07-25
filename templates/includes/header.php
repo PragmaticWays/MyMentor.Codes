@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Online Mentorship program for programmers">
+    <meta name="description" content="Online Mentorship program for programmers - A place for programmers to learn from and teach each other.">
     <meta name="author" content="Adam Allard">
     <link rel="icon" href="../../favicon.ico">
 
@@ -47,7 +47,7 @@
 		
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="index.php">Home</a></li>
+            <li><a href="index.php">Home</a></li>
 			
 			<?php if(!isLoggedIn()) : ?>
 				<li><a href="register.php">Create An Account</a></li>

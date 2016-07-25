@@ -26,8 +26,20 @@ class User {
 		$this->db->bind(':about', $data['about']);
 		$this->db->bind(':last_activity', $data['last_activity']);
 		
+		
 		// Execute
-		if ($this->db->execute()) {
+		if ($this->db->execute()) {	
+		
+			// Move avatar
+			$this->db->query("SELECT id FROM users WHERE username='". $data["username"] ."'");
+			$thisUser = $this->db->single();
+		
+			$source = "img/avatars/temp/" . $data['avatar'];
+			mkdir('img/avatars/' . $thisUser->id .'/', 0777, true);
+			$dest = "img/avatars/" . $thisUser->id . "/" . $data['avatar'];
+			
+			rename($source, $dest);
+		
 			return true;
 		} else {
 			return false;
@@ -40,24 +52,28 @@ class User {
 		$temp = explode(".", $_FILES["avatar"]["name"]);
 		$extension = end($temp);
 	
-		if ((($_FILES["avatar"]["type"] == "image/gif")
+		if (($_FILES["avatar"]["type"] == "image/gif")
 		  || ($_FILES["avatar"]["type"] == "image/jpeg")
 		  || ($_FILES["avatar"]["type"] == "image/jpg")
 		  || ($_FILES["avatar"]["type"] == "image/pjpeg")
 		  || ($_FILES["avatar"]["type"] == "image/x-png")
-		  || ($_FILES["avatar"]["type"] == "image/png"))
-		  && ($_FILES["avatar"]["size"] < 50000)
-		  && in_array($extension, $allowedExts)) {
-			if ($_FILES["avatar"]["error"] > 0) {
-				redirect('register.php', $_FILES["avatar"]["error"], 'error');
-			} else {
-				if (file_exists("img/avatars/" . $_FILES["avatar"]["name"])) {
-					redirect('register.php', 'File already exists', 'error');
-				} else {
-					move_uploaded_file($_FILES["avatar"]["tmp_name"], "img/avatars/" . $_FILES["avatar"]["name"]);
+		  || ($_FILES["avatar"]["type"] == "image/png")) {
+			if ($_FILES["avatar"]["size"] < 100000) {
+				if (in_array($extension, $allowedExts)) {
+					if ($_FILES["avatar"]["error"] > 0) {
+						redirect('register.php', $_FILES["avatar"]["error"], 'error');
+					} else {
+						if (file_exists("img/avatars/temp/" . $_FILES["avatar"]["name"])) {
+							redirect('register.php', 'File already exists. Rename your file.', 'error');
+						} else {
+							move_uploaded_file($_FILES["avatar"]["tmp_name"], "img/avatars/temp/" . $_FILES["avatar"]["name"]);
 					
-					return true;
+							return true;
+						}
+					}
 				}
+			} else {
+				redirect('register.php', 'File is too large. Use smaller file size.', 'error');
 			}
 		} else {
 			redirect('register.php', 'Invalid File Type.', 'error');
