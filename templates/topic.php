@@ -6,7 +6,7 @@
 		<div class="row">	
 			<div class="col-md-2">
 				<div class="user-info">
-					<img class="avatar pull-left" src="<?php echo BASE_URI; ?>img/avatars/<?php echo $topic->avatar; ?>" />
+					<img class="avatar pull-left" src="<?php echo BASE_URI; ?>img/avatars/<?php echo $topic->user_id . '/' . $topic->avatar; ?>" />
 					<ul>
 						<li><strong><?php echo $topic->username; ?></strong></li>
 						<li><?php echo userPostCount($topic->user_id); ?> Posts</li>
@@ -28,7 +28,7 @@
 		<div class="row">
 			<div class="col-md-2">
 				<div class="user-info">
-					<img class="avatar pull-left" src="<?php echo BASE_URI; ?>img/avatars/<?php echo $reply->avatar; ?>" />
+					<img class="avatar pull-left" src="<?php echo BASE_URI; ?>img/avatars/<?php echo $reply->user_id . '/' . $reply->avatar; ?>" />
 					<ul>
 						<li><strong><?php echo $reply->username; ?></strong></li>
 						<li><?php echo userPostCount($reply->user_id); ?> Posts</li>

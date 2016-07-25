@@ -6,7 +6,7 @@
 			<li class="topic">
 				<div class="row">
 					<div class="col-md-2">
-						<img class="avatar pull-left" src="<?php echo BASE_URI; ?>img/avatars/<?php echo $topic->avatar; ?>" />
+						<img class="avatar pull-left" src="<?php echo BASE_URI; ?>img/avatars/<?php echo $topic->user_id . '/' . $topic->avatar; ?>" />
 					</div>
 					<div class="col-md-10">
 						<div class="topic-content">
