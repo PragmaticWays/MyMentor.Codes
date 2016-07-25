@@ -1,5 +1,4 @@
 <?php require('core/init.php'); ?>
-
 <?php
 
 // Create topic object
@@ -46,3 +45,4 @@ $template->title = $topic->getTopic($topic_id)->title;
 
 // Display template
 echo $template;
+?>

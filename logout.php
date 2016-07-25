@@ -1,5 +1,4 @@
 <?php include('core/init.php'); ?>
-
 <?php 
 
 	if(isset($_POST['do_logout'])) {
@@ -14,3 +13,4 @@
 	} else {
 		redirect('index.php');
 	}
+?>

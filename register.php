@@ -1,5 +1,4 @@
 <?php require('core/init.php'); ?>
-
 <?php
 
 // Create topic object
@@ -59,3 +58,4 @@ $template = new Template('templates/register.php');
 
 // Display template
 echo $template;
+?>

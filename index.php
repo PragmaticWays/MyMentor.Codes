@@ -1,5 +1,4 @@
 <?php require('core/init.php'); ?>
-
 <?php
 
 // Create topic object
@@ -18,3 +17,4 @@ $template->totalTopics = $topic->getTotalTopics();
 
 // Display template
 echo $template;
+?>

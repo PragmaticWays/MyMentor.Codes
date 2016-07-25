@@ -1,5 +1,4 @@
 <?php include('core/init.php'); ?>
-
 <?php 
 
 	if(isset($_POST['do_login'])) {
@@ -20,3 +19,4 @@
 	} else {
 		redirect('index.php');
 	}
+?>
