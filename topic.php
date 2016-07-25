@@ -9,7 +9,7 @@ $topic = new Topic;
 $topic_id = $_GET['id'];
 
 // Process reply
-if ($isset($_POST['do_reply'])) {
+if (isset($_POST['do_reply'])) {
 	
 	// Create data array
 	$data = array();
