@@ -27,26 +27,34 @@ if (isset($_POST['register'])) {
 	if ($validate->isRequired($field_array)) {
 		if ($validate->isValidEmail($data['email'])) {
 			if ($validate->passwordsMatch($data['password'], $data['password2'])) {
+				if ($validate->usernameAvailable($data['username'])) {
+					if ($validate->emailNotUsed($data['email'])) {
 				
-				// Handle upload avatar
-				if ($user->uploadAvatar()) {
-					$data['avatar'] = $_FILES["avatar"]["name"];
-				} else {
-					$data['avatar'] = 'gravitar.png';
-				}
+						// Handle upload avatar
+							if ($user->uploadAvatar()) {
+								$data['avatar'] = $_FILES["avatar"]["name"];
+							} else {
+								$data['avatar'] = 'gravatar.png';
+							}
 	
-				// Register user
-				if ($user->register($data)) {
-					redirect('index.php', 'You are registered. You may log in.', 'success');
+						// Register user
+						if ($user->register($data)) {
+							redirect('index.php', 'You are registered. You may log in.', 'success');
+						} else {
+							redirect('index.php', 'Something went wrong with registration. Please try again.', 'error');
+						}
+					
+					} else {
+						redirect('register.php', "I feel like we've done this kind of thing before. Your email address is already associated with an account.", 'error');
+					}
 				} else {
-					redirect('index.php', 'Something went wrong with registration. Please try again.', 'error');
-				}
-				
+					redirect('register.php', 'Great minds think alike. This username is already taken. Please pick a different username.', 'error');
+				}				
 			} else {
-				redirect('register.php', 'Your passwords do not match.', 'error');
+				redirect('register.php', 'Do you get many syntax errors typing that fast? Your passwords do not match.', 'error');
 			}
 		} else {
-			redirect('register.php', 'Please use a valid email address.', 'error');
+			redirect('register.php', 'What kind of email address is that? Please use a valid email address.', 'error');
 		}
 	} else {
 		redirect('register.php', 'Please fill in all required fields.', 'error');

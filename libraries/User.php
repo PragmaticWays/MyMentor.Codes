@@ -30,10 +30,11 @@ class User {
 		// Execute
 		if ($this->db->execute()) {	
 		
-			// Move avatar
+			// Move user avatar from temp file to user's own (newly created) file
 			$this->db->query("SELECT id FROM users WHERE username='". $data["username"] ."'");
 			$thisUser = $this->db->single();
 		
+			// create user's own file to store images
 			$source = "img/avatars/temp/" . $data['avatar'];
 			mkdir('img/avatars/' . $thisUser->id .'/', 0777, true);
 			$dest = "img/avatars/" . $thisUser->id . "/" . $data['avatar'];
@@ -52,12 +53,17 @@ class User {
 		$temp = explode(".", $_FILES["avatar"]["name"]);
 		$extension = end($temp);
 	
+		if(!file_exists($_FILES['avatar']['tmp_name']) || !is_uploaded_file($_FILES['avatar']['tmp_name'])) {
+			copy("img/avatars/gravatar.png", "img/avatars/temp/gravatar.png");
+			return false;
+		}
 		if (($_FILES["avatar"]["type"] == "image/gif")
 		  || ($_FILES["avatar"]["type"] == "image/jpeg")
 		  || ($_FILES["avatar"]["type"] == "image/jpg")
 		  || ($_FILES["avatar"]["type"] == "image/pjpeg")
 		  || ($_FILES["avatar"]["type"] == "image/x-png")
-		  || ($_FILES["avatar"]["type"] == "image/png")) {
+		  || ($_FILES["avatar"]["type"] == "image/png") 
+		  || ($_FILES['avatar']['size'] == 0)) {
 			if ($_FILES["avatar"]["size"] < 100000) {
 				if (in_array($extension, $allowedExts)) {
 					if ($_FILES["avatar"]["error"] > 0) {
@@ -66,8 +72,8 @@ class User {
 						if (file_exists("img/avatars/temp/" . $_FILES["avatar"]["name"])) {
 							redirect('register.php', 'File already exists. Rename your file.', 'error');
 						} else {
+							// move avatar to temp file until new user is added to database and assigned an ID
 							move_uploaded_file($_FILES["avatar"]["tmp_name"], "img/avatars/temp/" . $_FILES["avatar"]["name"]);
-					
 							return true;
 						}
 					}
