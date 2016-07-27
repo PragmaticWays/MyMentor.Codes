@@ -2,13 +2,13 @@
 <?php
 
 // Create topic object
-$topic = new Topic;
+$topic = new Topic();
 
 // Create user object
-$user = new User;
+$user = new User();
 
 // Create validate object
-$validate = new Validator;
+$validate = new Validator();
 
 if (isset($_POST['register'])) {
 	// Create data array

@@ -2,12 +2,12 @@
 <?php
 
 // Create topic object
-$topic = new Topic;
+$topic = new Topic();
 
 if(isset($_POST['do_create'])) {
 	
 	// Create validator object
-	$validate = new Validator;
+	$validate = new Validator();
 	
 	// Create data array
 	$data = array();

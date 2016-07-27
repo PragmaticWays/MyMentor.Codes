@@ -195,5 +195,32 @@ fieldset[disabled] .btn-primary.focus {
   outline: 0 none;
 }
 
+/* Logout button link as form style */
+
+.inline {
+  display: inline;
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  color: #f1f1ef;
+  cursor: pointer;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  min-height: 50px;
+  position: relative;
+  display: inline-block;
+  padding: 10px 15px;
+}
+.logout-button:focus {
+  outline: none;
+}
+.logout-button:active {
+	background: #66b9bf;
+}
+.logout-button:hover {
+	background: #66b9bf;
+}
+
 
 

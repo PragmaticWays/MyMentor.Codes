@@ -13,6 +13,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo BASE_URI; ?>templates/css/bootstrap.css" rel="stylesheet">
+	
 
     <!-- Custom styles for this template -->
     <link href="<?php echo BASE_URI; ?>templates/css/custom.css" rel="stylesheet">
@@ -47,12 +48,19 @@
 		
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.php">Home</a></li>
+            <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
 			
 			<?php if(!isLoggedIn()) : ?>
-				<li><a href="register.php">Create An Account</a></li>
+				<li><a href="register.php"><span class="glyphicon glyphicon-user"></span> Create An Account</a></li>
+				<li><a href="about.php"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
 			<?php else : ?>
-				<li><a href="create.php">Create Topic</a></li>
+				<li><a href="create.php"><span class="glyphicon glyphicon-pencil"></span> Create Topic</a></li>
+				<li><a href="user.php"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+				<!-- Logout Link that acts as form -->
+				<form method="post" action="logout.php" class="inline">
+					<input type="hidden" name="do_logout" value="Logout">
+					<button type="submit" name="do_logout" value="Logout" class="logout-button"><span class="glyphicon glyphicon-log-out"></span> Logout</button>
+				</form>
 			<?php endif; ?>
 			
           </ul>

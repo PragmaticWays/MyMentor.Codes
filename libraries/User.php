@@ -53,6 +53,7 @@ class User {
 		$temp = explode(".", $_FILES["avatar"]["name"]);
 		$extension = end($temp);
 	
+		// If user did not upload a file, assign default image
 		if(!file_exists($_FILES['avatar']['tmp_name']) || !is_uploaded_file($_FILES['avatar']['tmp_name'])) {
 			copy("img/avatars/gravatar.png", "img/avatars/temp/gravatar.png");
 			return false;

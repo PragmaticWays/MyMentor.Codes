@@ -1,9 +1,9 @@
 <?php
 //DB Params
-define("DB_HOST", "");
-define("DB_USER", "");
-define("DB_PASS", "");
-define("DB_NAME", "");
+define("DB_HOST", "localhost");
+define("DB_USER", "root");
+define("DB_PASS", "fakepass");
+define("DB_NAME", "mymentorcodes");
 
 define("SITE_TITLE", "MyMentor.Codes");
 

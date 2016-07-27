@@ -2,7 +2,7 @@
 <?php
 
 // Create topic object
-$topic = new Topic;
+$topic = new Topic();
 
 // Get ID from URL
 $topic_id = $_GET['id'];
@@ -17,7 +17,7 @@ if (isset($_POST['do_reply'])) {
 	$data['user_id'] = getUser()['user_id'];
 	
 	// Create validator object
-	$validate = new Validator;
+	$validate = new Validator();
 	
 	// Required fields
 	$field_array = array('body');
