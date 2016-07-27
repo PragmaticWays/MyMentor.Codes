@@ -1,8 +1,22 @@
+@inlcude "compass/css3";
+
+html {
+	height: 100%;
+}
+
 body {
 	padding-top: 60px;
 	background: #f1f1ef;
 	font-size: 15px;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
+
+main {
+	flex: 1 0 auto;
+}
+
 
 a{
 	color: #e37222;
@@ -220,6 +234,54 @@ fieldset[disabled] .btn-primary.focus {
 }
 .logout-button:hover {
 	background: #66b9bf;
+}
+
+/* Footer */
+footer {
+	background: #015460;
+}
+
+footer h3{
+	color: #f1f1ef;
+}
+
+.footer-content-wrapper {
+  width: 60%;
+  margin: 1em auto;  
+}
+
+.footer-col {
+  display: inline-block;
+  padding: 0.5em 0.1em 0.5em 1em;
+  box-sizing: border-box;
+}
+
+.ta-l {
+  text-align: left;
+}
+.flt {
+  float: left;
+}
+
+.large-25 {
+  width: 25%;
+}
+
+.footer-col a {
+  display: block;
+  margin: 0.3em 0;
+}
+
+@media (max-width: 1000px) {
+  .small-50 {
+    width: 50%;  
+  }
+}
+
+@media (max-width: 650px) {
+  .tiny-100 {
+    width: 100%;
+  }
 }
 
 

@@ -31,9 +31,12 @@
 	?>
 	
   </head>
+  
 
   <body>
+  <main>
 
+	<br>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -54,8 +57,9 @@
 				<li><a href="register.php"><span class="glyphicon glyphicon-user"></span> Create An Account</a></li>
 				<li><a href="about.php"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
 			<?php else : ?>
+				<li><a href="find-mentor.php"><span class="glyphicon glyphicon-search"></span> Find a Mentor</a></li>
 				<li><a href="create.php"><span class="glyphicon glyphicon-pencil"></span> Create Topic</a></li>
-				<li><a href="user.php"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+				<li><a href="user.php"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
 				<!-- Logout Link that acts as form -->
 				<form method="post" action="logout.php" class="inline">
 					<input type="hidden" name="do_logout" value="Logout">

@@ -47,6 +47,40 @@
 		</div>
 
     </div><!-- /.container -->
+</main>
+	
+	<!-- Footer -->
+<footer>
+	<div class="footer-content-wrapper">
+		<div class="footer-col large-25 small-50 tiny-100 ta-l flt">
+			<h3>MyMentor.Codes</h3>
+			<a href="index.php">Home</a>
+			<a href="about.php">About</a>
+			<a href="contact.php">Contact</a>
+		</div>
+		<div class="footer-col large-25 small-50 tiny-100 ta-l flt">
+			<h3>Community</h3>
+			<a href="#">Privacy Statement</a>
+			<a href="#">Code of Conduct</a>
+			<a href="#">Support</a>
+		</div>
+		<div class="footer-col large-25 small-50 tiny-100 ta-l flt">
+			<h3>Categories</h3>
+			<?php foreach(getCategories() as $category) : ?>
+			<a href="topics.php?category=<?php echo $category->id; ?>"><?php echo $category->name; ?></a>
+			<?php endforeach; ?>
+			
+		</div>
+		<div class="footer-col large-25 small-50 tiny-100 ta-l flt">
+			<h3>Social</h3>
+			<a href="#">Facebook</a>
+			<a href="#">Twitter</a>
+			<a href="#">YouTube</a>
+			<a href="#">Instagram</a>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</footer>
 
-  </body>
+</body>
 </html>
