@@ -13,6 +13,12 @@ $template = new Template('templates/find-mentor.php');
 // Assign vars
 $template->title = 'Find a Mentor';
 
+if (isLoggedIn()) {
+		$template->user = getUser();
+	} else {
+		redirect('index.php', 'You must be logged in to find a mentor.', 'error');
+	}
+
 // Display template
 echo $template;
 ?>

@@ -1,0 +1,2 @@
+RewriteEngine On    # Turn on the rewriting engine
+RewriteRule    ^([A-Za-z0-9-]+)/?$    user.php?username=$1    [NC,L]    # individual user profile pages

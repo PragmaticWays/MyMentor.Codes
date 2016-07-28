@@ -17,6 +17,16 @@ main {
 	flex: 1 0 auto;
 }
 
+a #nav-img {
+	height: 50px;
+	margin-top: -15px;
+	margin-right: 10px;
+	content: url("../../img/avatars/gravatar.png");
+}
+a:hover #nav-img {
+	content: url("../../img/grav-hover.png");
+}
+
 
 a{
 	color: #e37222;
@@ -88,6 +98,7 @@ h3 {
 
 img.avatar {
 	width: 100%;
+	border-radius: 5px;
 }
 
 #main-topic {
@@ -179,6 +190,10 @@ fieldset[disabled] .btn-primary.focus {
   background-color: #fff;
 }
 
+#first-block {
+	min-height: 250px;
+}
+
 .block {
 	background: #fff;
 	border-radius: 5px;
@@ -207,6 +222,12 @@ fieldset[disabled] .btn-primary.focus {
   border-color: rgba(238, 170, 123, 0.8);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(227, 114, 34, 0.6);
   outline: 0 none;
+}
+
+/* User profile page */
+#prof-pic {
+	width: 150px;
+	margin-right: 20px;
 }
 
 /* Logout button link as form style */
@@ -239,6 +260,7 @@ fieldset[disabled] .btn-primary.focus {
 /* Footer */
 footer {
 	background: #015460;
+	margin-top: 50px;
 }
 
 footer h3{
@@ -276,11 +298,17 @@ footer h3{
   .small-50 {
     width: 50%;  
   }
+  .footer-content-wrapper {
+  width: 75%; 
+  }
 }
 
 @media (max-width: 650px) {
   .tiny-100 {
     width: 100%;
+  }
+  .footer-content-wrapper {
+  width: 90%; 
   }
 }
 

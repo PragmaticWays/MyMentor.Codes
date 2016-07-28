@@ -46,7 +46,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php">MyMentor.Codes</a>
+          <a id="nav-head-link" class="navbar-brand" href="index.php"><img id="nav-img" class="pull-left"/>MyMentor.Codes</a>
         </div>
 		
         <div id="navbar" class="collapse navbar-collapse">
@@ -59,7 +59,7 @@
 			<?php else : ?>
 				<li><a href="find-mentor.php"><span class="glyphicon glyphicon-search"></span> Find a Mentor</a></li>
 				<li><a href="create.php"><span class="glyphicon glyphicon-pencil"></span> Create Topic</a></li>
-				<li><a href="user.php"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
+				<li><a href="<?php echo $user['username']; ?>"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
 				<!-- Logout Link that acts as form -->
 				<form method="post" action="logout.php" class="inline">
 					<input type="hidden" name="do_logout" value="Logout">
@@ -77,7 +77,7 @@
 		<div class="row">
 			<div class="col-md-8">
 				<div class="main-col">
-					<div class="block">
+					<div class="block" id="first-block">
 						<h1 class="pull-left"><?php echo $title; ?></h1>
 						<h4 class="pull-right">An Online Mentorship Program for Programmers</h4>
 						<div class="clearfix"></div>

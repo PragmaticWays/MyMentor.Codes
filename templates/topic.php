@@ -5,14 +5,16 @@
 	<li id="main-topic" class="topic topic">
 		<div class="row">	
 			<div class="col-md-2">
+				<a href="<?php echo BASE_URI . $topic->username; ?>">
 				<div class="user-info">
-					<img class="avatar pull-left" src="<?php echo BASE_URI; ?>img/avatars/<?php echo $topic->user_id . '/' . $topic->avatar; ?>" />
+						<img class="avatar pull-left" src="<?php echo BASE_URI; ?>img/avatars/<?php echo $topic->user_id . '/' . $topic->avatar; ?>" style="float:left;"/>
+					
 					<ul>
 						<li><strong><?php echo $topic->username; ?></strong></li>
-						<li><?php echo userPostCount($topic->user_id); ?> Posts</li>
-						<li><a href="<?php echo BASE_URI; ?>topics.php?user=<?php echo $topic->user_id; ?>">View topics</a>
+						<li><a href="<?php echo BASE_URI; ?>topics.php?user=<?php echo $topic->user_id; ?>"><?php echo userPostCount($topic->user_id); ?> Posts</a></li>
 					</ul>
 				</div>
+				</a>
 			</div>
 			<div class="col-md-10">
 				<div class="topic-content pull-left">
@@ -27,14 +29,16 @@
 	<li class="topic topic">
 		<div class="row">
 			<div class="col-md-2">
+			<a href="<?php echo BASE_URI . $reply->username; ?>">
 				<div class="user-info">
 					<img class="avatar pull-left" src="<?php echo BASE_URI; ?>img/avatars/<?php echo $reply->user_id . '/' . $reply->avatar; ?>" />
 					<ul>
 						<li><strong><?php echo $reply->username; ?></strong></li>
-						<li><?php echo userPostCount($reply->user_id); ?> Posts</li>
-						<li><a href="<?php echo BASE_URI; ?>topics.php?user=<?php echo $reply->user_id; ?>">View topics</a>
+						<li><a href="<?php echo BASE_URI; ?>topics.php?user=<?php echo $reply->user_id; ?>"><?php echo userPostCount($reply->user_id); ?> Posts</a></li>
+						
 					</ul>
 				</div>
+				</a>
 			</div>
 			<div class="col-md-10">
 				<div class="topic-content pull-left">

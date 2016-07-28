@@ -4,6 +4,9 @@
 // Create topic object
 $topic = new Topic();
 
+// Create user object 
+$user = new User();
+
 if(isset($_POST['do_create'])) {
 	
 	// Create validator object
@@ -34,6 +37,12 @@ if(isset($_POST['do_create'])) {
 
 // Get template and assign vars
 $template = new Template('templates/create.php');
+
+if (isLoggedIn()) {
+		$template->user = getUser();
+	} else {
+		redirect('index.php', 'You must be logged in for that.', 'error');
+	}
 
 // Display template
 echo $template;

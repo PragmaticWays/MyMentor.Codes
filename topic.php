@@ -4,6 +4,9 @@
 // Create topic object
 $topic = new Topic();
 
+// Create user object
+$user = new User();
+
 // Get ID from URL
 $topic_id = $_GET['id'];
 
@@ -42,6 +45,10 @@ $template = new Template('templates/topic.php');
 $template->topic = $topic->getTopic($topic_id);
 $template->replies = $topic->getReplies($topic_id);
 $template->title = $topic->getTopic($topic_id)->title;
+
+if (isLoggedIn()) {
+	$template->user = getUser();
+}
 
 // Display template
 echo $template;

@@ -115,6 +115,19 @@ class User {
 		$_SESSION['name'] = $row->name;
 	}
 	
+	// Get user data
+	public function getUserData($username) {
+		$this->db->query("SELECT id, name, username, about, avatar, join_date, location FROM users WHERE username = :username");
+		
+		// Bind values
+		$this->db->bind(':username', $username);
+		
+		// Assign row
+		$row = $this->db->single();
+		
+		return $row;
+	}
+	
 	// User logout
 	public function logout() {
 		unset($_SESSION['is_logged_in']);

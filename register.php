@@ -1,6 +1,7 @@
 <?php require('core/init.php'); ?>
 <?php
 
+if (!isLoggedIn()) {
 // Create topic object
 $topic = new Topic();
 
@@ -19,6 +20,7 @@ if (isset($_POST['register'])) {
 	$data['password'] = md5($_POST['password']);
 	$data['password2'] = md5($_POST['password2']);
 	$data['about'] = $_POST['about'];
+	$data['location'] = $_POST['location'];
 	$data['last_activity'] = date("Y-m-d H:i:s");
 	
 	// Required fields array
@@ -64,6 +66,10 @@ if (isset($_POST['register'])) {
 // Get template and assign vars
 $template = new Template('templates/register.php');
 
+
 // Display template
 echo $template;
+} else {
+		redirect('index.php', 'You must log out to register a new account.', 'error');
+}
 ?>

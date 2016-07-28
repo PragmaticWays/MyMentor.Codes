@@ -1,4 +1,4 @@
-					</div> <!-- end block from header -->
+
 				</div><!-- /.main-col from header -->
 			</div><!-- /.col-md-8 from header -->
 			

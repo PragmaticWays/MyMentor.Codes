@@ -15,6 +15,10 @@ $template->topics = $topic->getAllTopics();
 $template->totalUsers = $user->getTotalUsers();
 $template->totalTopics = $topic->getTotalTopics();
 
+if (isLoggedIn()) {
+		$template->user = getUser();
+	} 
+
 // Display template
 echo $template;
 ?>

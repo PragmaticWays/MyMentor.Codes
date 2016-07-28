@@ -40,7 +40,12 @@ class Validator{
 	
 	// Check if username is taken
 	public function usernameAvailable($username) {
-		$this->db->query("SELECT username FROM users WHERE username='". $username ."'");
+		$this->db->query("SELECT username FROM users WHERE username = :username");
+		
+		// Bind values
+		$this->db->bind(':username', $username);
+		
+		// Assign
 		$thisUser = $this->db->single();
 		
 		if(!$thisUser) {
@@ -52,7 +57,12 @@ class Validator{
 	
 	// Check if email address is already used
 	public function emailNotUsed($email) {
-		$this->db->query("SELECT email FROM users WHERE email='". $email ."'");
+		$this->db->query("SELECT email FROM users WHERE email = :email");
+
+		// Bind values
+		$this->db->bind(':username', $username);
+		
+		// Assign
 		$thisUser = $this->db->single();
 		
 		if(!$thisUser) {

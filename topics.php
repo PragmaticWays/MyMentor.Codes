@@ -36,6 +36,10 @@ if (!isset($category) && !isset($user_id)) {
 $template->totalUsers = $user->getTotalUsers();
 $template->totalTopics = $topic->getTotalTopics();
 
+if (isLoggedIn()) {
+	$template->user = getUser();
+}
+
 // Display template
 echo $template;
 ?>
