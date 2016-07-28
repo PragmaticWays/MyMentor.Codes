@@ -89,14 +89,20 @@ class User {
 	
 	// User login
 	public function login($username, $password) {
-		$this->db->query("SELECT * FROM users WHERE username = :username AND password = :password");
+		$this->db->query("SELECT * FROM users WHERE username = :username");
 		
 		// Bind values
 		$this->db->bind(':username', $username);
-		$this->db->bind(':password', $password);
 		
 		// Assign row
 		$row = $this->db->single();
+		
+		if (password_verify($password, $row->password)) {
+			$this->setUserData($row);
+			return true;
+		} else {
+			return false;
+		}
 		
 		// Check rows
 		if ($this->db->rowCount() > 0) {

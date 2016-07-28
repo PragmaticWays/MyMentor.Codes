@@ -60,7 +60,7 @@ class Validator{
 		$this->db->query("SELECT email FROM users WHERE email = :email");
 
 		// Bind values
-		$this->db->bind(':username', $username);
+		$this->db->bind(':email', $email);
 		
 		// Assign
 		$thisUser = $this->db->single();

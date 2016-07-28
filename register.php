@@ -17,8 +17,8 @@ if (isset($_POST['register'])) {
 	$data['name'] = $_POST['name'];
 	$data['email'] = $_POST['email'];
 	$data['username'] = $_POST['username'];
-	$data['password'] = md5($_POST['password']);
-	$data['password2'] = md5($_POST['password2']);
+	$pw1 = $_POST['password'];
+	$pw2 = $_POST['password2'];
 	$data['about'] = $_POST['about'];
 	$data['location'] = $_POST['location'];
 	$data['last_activity'] = date("Y-m-d H:i:s");
@@ -28,7 +28,10 @@ if (isset($_POST['register'])) {
 	
 	if ($validate->isRequired($field_array)) {
 		if ($validate->isValidEmail($data['email'])) {
-			if ($validate->passwordsMatch($data['password'], $data['password2'])) {
+			if ($validate->passwordsMatch($pw1, $pw2)) {
+				// If passwords match - hash 
+				$hashed =  password_hash($pw1, PASSWORD_DEFAULT);
+				$data['password'] = $hashed;
 				if ($validate->usernameAvailable($data['username'])) {
 					if ($validate->emailNotUsed($data['email'])) {
 				
@@ -39,7 +42,6 @@ if (isset($_POST['register'])) {
 								$data['avatar'] = 'gravatar.png';
 							}
 	
-						// Register user
 						if ($user->register($data)) {
 							redirect('index.php', 'You are registered. You may log in.', 'success');
 						} else {

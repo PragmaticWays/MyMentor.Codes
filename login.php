@@ -5,7 +5,7 @@
 	
 		// Get vars
 		$username = $_POST['username'];
-		$password = md5($_POST['password']);
+		$password = $_POST['password'];
 		
 		// Create user object
 		$user = new User;
