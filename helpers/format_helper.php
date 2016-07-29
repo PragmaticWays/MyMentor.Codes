@@ -31,7 +31,7 @@ function formatDate($date) {
 
 function is_active($category) {
 	if (isset($_GET['category'])) {
-		if ($_GET['category'] == $category) {
+		if ($_GET['category'] == urlFormat($category)) {
 			return 'active';
 		} else {
 			return "";
