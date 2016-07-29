@@ -38,6 +38,22 @@ class Validator{
 		}
 	}
 	
+	// Check if username valid 
+	public function usernameValid($username) {
+		$restrictedUsernames = array('about','user','topic','topics','register','create','find-mentor','contact');
+		if (preg_grep( "/$username/i" , $restrictedUsernames )) {
+			return false;
+		}
+		
+		$pattern = "/^[a-zA-Z0-9]+$/";
+		
+		if (preg_match($pattern, $username, $matches)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	// Check if username is taken
 	public function usernameAvailable($username) {
 		$this->db->query("SELECT username FROM users WHERE username = :username");

@@ -9,7 +9,7 @@
 			<label>Email Address*</label> <input type="email" class="form-control" name="email" placeholder="Enter Your Email Address">
 		</div>
 		<div class="form-group">
-			<label>Username*</label> <input type="text" class="form-control" name="username" placeholder="Choose a Username">
+			<label>Username*</label> <input type="text" class="form-control" name="username" id="username" placeholder="Choose a Username">
 		</div>
 		<div class="form-group">
 			<label>Password*</label> <input type="password" class="form-control" name="password" placeholder="Enter a Password">

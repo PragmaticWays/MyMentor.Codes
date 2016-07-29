@@ -28,36 +28,40 @@ if (isset($_POST['register'])) {
 	
 	if ($validate->isRequired($field_array)) {
 		if ($validate->isValidEmail($data['email'])) {
-			if ($validate->passwordsMatch($pw1, $pw2)) {
-				// If passwords match - hash 
-				$hashed =  password_hash($pw1, PASSWORD_DEFAULT);
-				$data['password'] = $hashed;
-				if ($validate->usernameAvailable($data['username'])) {
-					if ($validate->emailNotUsed($data['email'])) {
+			if ($validate->usernameValid($data['username'])) {
+				if ($validate->passwordsMatch($pw1, $pw2)) {
+					// If passwords match - hash 
+					$hashed =  password_hash($pw1, PASSWORD_DEFAULT);
+					$data['password'] = $hashed;
+					if ($validate->usernameAvailable($data['username'])) {
+						if ($validate->emailNotUsed($data['email'])) {
 				
-						// Handle upload avatar
-							if ($user->uploadAvatar()) {
-								$data['avatar'] = $_FILES["avatar"]["name"];
+							// Handle upload avatar
+								if ($user->uploadAvatar()) {
+									$data['avatar'] = $_FILES["avatar"]["name"];
+								} else {
+									$data['avatar'] = 'gravatar.png';
+								}
+		
+							if ($user->register($data)) {
+								redirect('index.php', 'You are registered. You may log in.', 'success');
 							} else {
-								$data['avatar'] = 'gravatar.png';
+								redirect('index.php', 'Something went wrong with registration. Please try again.', 'error');
 							}
-	
-						if ($user->register($data)) {
-							redirect('index.php', 'You are registered. You may log in.', 'success');
+						
 						} else {
-							redirect('index.php', 'Something went wrong with registration. Please try again.', 'error');
+							redirect('register.php', "I feel like we've done this kind of thing before. Your email address is already associated with an account.", 'error');
 						}
-					
 					} else {
-						redirect('register.php', "I feel like we've done this kind of thing before. Your email address is already associated with an account.", 'error');
-					}
+						redirect('register.php', 'Great minds think alike. This username is already taken. Please pick a different username.', 'error');
+					}				
 				} else {
-					redirect('register.php', 'Great minds think alike. This username is already taken. Please pick a different username.', 'error');
-				}				
+					redirect('register.php', 'Do you get many syntax errors typing that fast? Your passwords do not match.', 'error');
+				}
 			} else {
-				redirect('register.php', 'Do you get many syntax errors typing that fast? Your passwords do not match.', 'error');
-			}
-		} else {
+				redirect('register.php', 'Your username can only consist of letters and numbers.', 'error');
+			} 
+		}else {
 			redirect('register.php', 'What kind of email address is that? Please use a valid email address.', 'error');
 		}
 	} else {
