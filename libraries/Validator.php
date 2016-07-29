@@ -88,4 +88,14 @@ class Validator{
 		}
 	}
 	
+	// Check if valid topic title
+	public function validTitle($title) {
+		$prohibitedChars = array('"',"'",'@','#','$','%','^','&','*','<','>','`','+','=','~');
+		if (preg_grep( "/$title/i" , $prohibitedChars )) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
 }

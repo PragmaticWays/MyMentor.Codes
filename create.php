@@ -24,11 +24,14 @@ if(isset($_POST['do_create'])) {
 	$field_array = array('title', 'body', 'category');
 	
 	if ($validate->isRequired($field_array)) {
-		// Register user
-		if ($topic->create($data)) {
-			redirect('index.php', 'Your topic has been successfully posted.', 'success');
+		if ($validate->validTitle($field_array['title'])) {
+			if ($topic->create($data)) {
+				redirect('./', 'Your topic has been successfully posted.', 'success');
+			} else {
+				redirect('./', 'Something went wrong with your post. Please try again', 'error');
+			}
 		} else {
-			redirect('topic.php?id='.$topic_id, 'Something went wrong with your post. Please try again', 'error');
+			redirect('create.php', 'Your title may only consist of letters, number, -, !, or ?', 'error');
 		}
 	} else {
 		redirect('create.php', 'Please fill in all required fields.', 'error');

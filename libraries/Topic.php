@@ -115,7 +115,7 @@ class Topic {
 		return $results;
 	}
 	
-	// Get username by ID
+	// Get username by ID - MOVE TO USER()
 	public function getUsername($user_id) {
 		$this->db->query("SELECT * FROM users WHERE id = :user_id");
 		$this->db->bind(':user_id', $user_id);
@@ -126,7 +126,7 @@ class Topic {
 		return $row;
 	}
 	
-	// Get user ID by username 
+	// Get user ID by username - MOVE TO USER()
 	public function getID($username) {
 		$this->db->query("SELECT * FROM users WHERE username = :username");
 		$this->db->bind(':username', $username);
