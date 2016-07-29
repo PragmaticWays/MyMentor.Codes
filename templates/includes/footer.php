@@ -39,7 +39,7 @@
 						<div class="list-group">
 							<a href="<?php echo BASE_URI; ?>topics" class="list-group-item <?php echo is_active(null); ?>">All Topics</a>
 							<?php foreach(getCategories() as $category) : ?>
-							<a href="<?php echo BASE_URI; ?>topics/category/<?php echo urlFormat($category->name); ?>" class="list-group-item <?php echo is_active($category->name); ?>"><?php echo $category->name; ?></a>
+							<a href="<?php echo BASE_URI; ?>topics/<?php echo urlFormat($category->name); ?>" class="list-group-item <?php echo is_active($category->name); ?>"><?php echo $category->name; ?></a>
 							<?php endforeach; ?>
 						</div>
 					</div>	

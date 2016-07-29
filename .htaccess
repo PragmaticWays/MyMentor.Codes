@@ -9,10 +9,10 @@ RewriteRule	   ^find-mentor$          find-mentor.php		  [NC,L]	# take out .php 
 RewriteRule	   ^topics$          	  topics.php		      [NC,L]	# take out .php extention 
 
 # Rewrite topics page by category
-RewriteRule    ^topics/category/([A-Za-z0-9-]+)/?$    topics.php?category=$1    [NC,L]
+RewriteRule    ^topics/([A-Za-z0-9-]+)/?$    topics.php?category=$1    [NC,L]
 
 # Rewrite topics page by username
-RewriteRule    ^topics/user/([A-Za-z0-9-]+)/?$    topics.php?user=$1    [NC,L]
+RewriteRule    ^([A-Za-z0-9-]+)/topics?$    topics.php?user=$1    [NC,L]
 
 # Rewrite user profile pages to MyMentor.Codes/username
 RewriteRule    ^([A-Za-z0-9-]+)/?$    user.php?username=$1    [NC,L] 

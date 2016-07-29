@@ -25,13 +25,13 @@ $template = new Template('templates/topics.php');
 // Assign template vars
 if (isset($category)) {
 	$template->topics = $topic->getByCategory($category);
-	$template->title = 'Posts In "'.$topic->getCategory($category)->name.'"';
+	$template->title = 'Posts In <strong>'.$topic->getCategory($category)->name.'</strong>';
 }
 
 // Check for user filter
 if (isset($username)) {
 	$template->topics = $topic->getByUser($username);
-	$template->title = 'Posts by "'.$username.'"';
+	$template->title = 'Posts by <strong>'.$username.'</strong>';
 }
 
 // Check for category filter
