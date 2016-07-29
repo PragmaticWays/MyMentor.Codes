@@ -37,9 +37,9 @@
 					<div class="block">
 						<h3>Categories</h3>
 						<div class="list-group">
-							<a href="topics.php" class="list-group-item <?php echo is_active(null); ?>">All Topics</a>
+							<a href="<?php echo BASE_URI; ?>topics" class="list-group-item <?php echo is_active(null); ?>">All Topics</a>
 							<?php foreach(getCategories() as $category) : ?>
-							<a href="topics.php?category=<?php echo $category->id; ?>" class="list-group-item <?php echo is_active($category->id); ?>"><?php echo $category->name; ?></a>
+							<a href="<?php echo BASE_URI; ?>topics/<?php echo urlFormat($category->name); ?>" class="list-group-item <?php echo is_active($category->name); ?>"><?php echo $category->name; ?></a>
 							<?php endforeach; ?>
 						</div>
 					</div>	

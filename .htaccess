@@ -14,6 +14,12 @@ RewriteRule    ^topics/([A-Za-z0-9-]+)/?$    topics.php?category=$1    [NC,L]
 # Rewrite topics page by username
 RewriteRule    ^([A-Za-z0-9-]+)/topics?$    topics.php?user=$1    [NC,L]
 
+# Rewrite topics by user replies
+RewriteRule	   ^([A-Za-z0-9-]+)/replies?$    replies.php?user=$1    [NC,L]
+
+#Rewrite individual topic page 
+RewriteRule    ^([A-Za-z0-9-]+)/([A-Za-z0-9-!?]+)?$			topic.php?username=$1&title=$2			[NC,L]
+
 # Rewrite user profile pages to MyMentor.Codes/username
 RewriteRule    ^([A-Za-z0-9-]+)/?$    user.php?username=$1    [NC,L] 
 

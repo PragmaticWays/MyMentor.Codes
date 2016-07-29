@@ -6,9 +6,6 @@ function urlFormat($str) {
 	// Replace space with - for SEO purposes
 	$str = str_replace(' ', '-', $str);
 	
-	// String out whitespace
-	$str = preg_replace('/\s*/', '', $str);
-	
 	// Convert string to all lowercase
 	$str = strtolower($str);
 	

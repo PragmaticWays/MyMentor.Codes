@@ -8,14 +8,15 @@ $topic = new Topic();
 $user = new User();
 
 // Get ID from URL
-$topic_id = $_GET['id'];
+$topic_title = $_GET['title'];
 
 // Process reply
 if (isset($_POST['do_reply'])) {
 	
 	// Create data array
 	$data = array();
-	$data['topic_id'] = $_GET['id'];
+	
+	$data['topic_id'] = $topic->getTopic(urlUnformat($topic_title))->id;
 	$data['body'] = $_POST['body'];
 	$data['user_id'] = getUser()['user_id'];
 	
@@ -29,12 +30,12 @@ if (isset($_POST['do_reply'])) {
 		
 		// Register user
 		if ($topic->reply($data)) {
-			redirect('topic.php?id='.topic_id, 'You have successfully replied.', 'success');
+			redirect('./'.urlFormat($topic_title), 'You have successfully replied.', 'success');
 		} else {
-			redirect('topic.php?id='.topic_id, 'Something went wrong with your post. Please try again.', 'success');
+			redirect('topic.php?id='.topic_title, 'Something went wrong with your post. Please try again.', 'success');
 		}
 	} else {
-		redirect('topic.php?id='.topic_id, 'Please try to refrain from leaving a blank reply.', 'success');
+		redirect('topic.php?id='.topic_title, 'Please try to refrain from leaving a blank reply.', 'success');
 	}
 }
 
@@ -42,9 +43,11 @@ if (isset($_POST['do_reply'])) {
 $template = new Template('templates/topic.php');
 
 // Assign vars
-$template->topic = $topic->getTopic($topic_id);
+$template->topic = $topic->getTopic(urlUnformat($topic_title));
+
+$topic_id = $topic->getTopic(urlUnformat($topic_title))->id;
 $template->replies = $topic->getReplies($topic_id);
-$template->title = $topic->getTopic($topic_id)->title;
+$template->title = urlUnformat($topic_title);
 
 if (isLoggedIn()) {
 	$template->user = getUser();

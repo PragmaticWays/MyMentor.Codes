@@ -82,10 +82,54 @@ class Topic {
 		return $results;
 	}
 	
+	// Get topics that a user has replied to
+	public function getUserReplies($id) {
+		$this->db->query("SELECT topics.id AS top_id,
+						  topics.category_id AS top_cat_id,
+						  topics.user_id AS top_user_id,
+						  topics.title,
+						  topics.create_date,
+						  users.id AS user_user_id,
+						  users.username AS top_username,
+						  users.avatar,
+						  replies.id AS reply_reply_id,
+						  replies.topic_id AS reply_top_id,
+						  replies.user_id AS reply_user_id,
+						  categories.id AS cat_id,
+						  categories.name AS cat_name
+						  
+						  FROM topics
+						  INNER JOIN replies
+						  ON topics.id = replies.topic_id
+						  INNER JOIN users
+						  ON topics.user_id = users.id
+						  INNER JOIN categories
+						  ON topics.category_id = categories.id
+						  WHERE replies.user_id = :id
+		");
+		$this->db->bind(':id', $id);
+		
+		// Assign result set
+		$results = $this->db->resultset();		
+		
+		return $results;
+	}
+	
 	// Get username by ID
 	public function getUsername($user_id) {
 		$this->db->query("SELECT * FROM users WHERE id = :user_id");
 		$this->db->bind(':user_id', $user_id);
+		
+		// Assign rowCount
+		$row = $this->db->single();
+		
+		return $row;
+	}
+	
+	// Get user ID by username 
+	public function getID($username) {
+		$this->db->query("SELECT * FROM users WHERE username = :username");
+		$this->db->bind(':username', $username);
 		
 		// Assign rowCount
 		$row = $this->db->single();
@@ -100,8 +144,8 @@ class Topic {
 		return $this->db->rowCount();
 	}
 	
-	// Get topic by ID
-	public function getTopic($id) {
+	// Get topic by title
+	public function getTopic($title) {
 		$this->db->query("SELECT topics.*,
 						  users.username,
 						  users.name,
@@ -110,9 +154,9 @@ class Topic {
 						  FROM topics
 						  INNER JOIN users
 						  ON topics.user_id = users.id
-						  WHERE topics.id = :id
+						  WHERE topics.title = :title
 		");
-		$this->db->bind(':id', $id);
+		$this->db->bind(':title', $title);
 		
 		// Assign row
 		$row = $this->db->single();

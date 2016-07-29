@@ -12,7 +12,7 @@
 					</div>
 					<div class="col-md-10">
 						<div class="topic-content">
-							<h3><a href="<?php echo BASE_URI; ?>topic.php?id=<?php echo $topic->id; ?>"><?php echo $topic->title; ?></a></h3>
+							<h3><a href="<?php echo BASE_URI; ?><?php echo urlFormat($topic->username); ?>/<?php echo urlFormat($topic->title); ?>"><?php echo $topic->title; ?></a></h3>
 							<div class="topic-info">
 								<a href="<?php echo BASE_URI; ?>topics/<?php echo urlFormat($topic->name); ?>"><?php echo $topic->name; ?></a> >> 
 								<a href="<?php echo BASE_URI; ?><?php echo urlFormat($topic->username); ?>/topics"><?php echo $topic->username; ?></a> >>

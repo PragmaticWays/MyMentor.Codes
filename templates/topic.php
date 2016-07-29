@@ -11,7 +11,7 @@
 					
 					<ul>
 						<li><strong><?php echo $topic->username; ?></strong></li>
-						<li><a href="<?php echo BASE_URI; ?>topics.php?user=<?php echo $topic->user_id; ?>"><?php echo userPostCount($topic->user_id); ?> Posts</a></li>
+						<li><a href="<?php echo BASE_URI . $topic->username; ?>/<?php echo urlFormat($topic->title); ?>"><?php echo userTopicCount($topic->user_id); ?> Posts</a></li>
 					</ul>
 				</div>
 				</a>
@@ -31,10 +31,11 @@
 			<div class="col-md-2">
 			<a href="<?php echo BASE_URI . $reply->username; ?>">
 				<div class="user-info">
-					<img class="avatar pull-left" src="<?php echo BASE_URI; ?>img/avatars/<?php echo $reply->user_id . '/' . $reply->avatar; ?>" />
+					<img class="avatar pull-left" src="<?php echo BASE_URI; ?>img/avatars/<?php echo $reply->top_user_id . '/' . $reply->avatar; ?>" />
 					<ul>
 						<li><strong><?php echo $reply->username; ?></strong></li>
-						<li><a href="<?php echo BASE_URI; ?>topics.php?user=<?php echo $reply->user_id; ?>"><?php echo userPostCount($reply->user_id); ?> Posts</a></li>
+						<li><a href="<?php echo BASE_URI; ?><?php echo $reply->username; ?>/topics"><?php echo userTopicCount($reply->user_id); ?> Topics</a></li>
+						<li><a href="<?php echo BASE_URI; ?><?php echo $reply->username; ?>/replies"><?php echo userReplyCount($reply->user_id); ?> Replies</a></li>
 						
 					</ul>
 				</div>
@@ -53,7 +54,7 @@
 <!-- Create reply if logged in-->
 <?php if(isLoggedIn()) : ?>
 <h3>Reply To Topic</h3>
-<form role="form" method="post" action="topic.php?id=<?php echo $topic->id; ?>">
+<form role="form" method="post" action="<?php echo BASE_URI; ?><?php echo $topic->username; ?>/<?php echo urlFormat($topic->title); ?>">
 	<div class="form-group">
 		<textarea id="reply" rows="10" cols="80" class="form-control" name="body"></textarea>
 		<script>CKEDITOR.replace('reply');</script>
