@@ -8,10 +8,16 @@ $topic = new Topic;
 $user = new User;
 
 // Get category from URL
-$category = isset($_GET['category']) ? $_GET['category'] : null;
+if (isset($_GET['category'])) {
+	$category = $_GET['category'];
+	$category = urlUnformat($category);
+} else {
+	$category = null;
+}
+
 
 // Get user from URL
-$user_id = isset($_GET['user']) ? $_GET['user'] : null;
+$username = isset($_GET['user']) ? $_GET['user'] : null;
 
 // Get template and assign vars
 $template = new Template('templates/topics.php');
@@ -23,13 +29,13 @@ if (isset($category)) {
 }
 
 // Check for user filter
-if (isset($user_id)) {
-	$template->topics = $topic->getByUser($user_id);
-	$template->title = 'Posts By "'.$topic->getUsername($user_id)->username.'"';
+if (isset($username)) {
+	$template->topics = $topic->getByUser($username);
+	$template->title = 'Posts by "'.$username.'"';
 }
 
 // Check for category filter
-if (!isset($category) && !isset($user_id)) {
+if (!isset($category) && !isset($username)) {
 	$template->topics = $topic->getAllTopics();
 }
 

@@ -56,8 +56,8 @@
 	<div class="footer-content-wrapper">
 		<div class="footer-col large-25 small-50 tiny-100 ta-l flt">
 			<h3>MyMentor.Codes</h3>
-			<a href="index.php">Home</a>
-			<a href="about.php">About</a>
+			<a href="../">Home</a>
+			<a href="about">About</a>
 			<a href="#">Contact</a>
 		</div>
 		<div class="footer-col large-25 small-50 tiny-100 ta-l flt">

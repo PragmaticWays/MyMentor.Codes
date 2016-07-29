@@ -51,17 +51,17 @@
 		
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+            <li><a href="<?php echo BASE_URI; ?>"><span class="glyphicon glyphicon-home"></span> Home</a></li>
 			
 			<?php if(!isLoggedIn()) : ?>
-				<li><a href="register.php"><span class="glyphicon glyphicon-user"></span> Create An Account</a></li>
-				<li><a href="about.php"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+				<li><a href="<?php echo BASE_URI; ?>register"><span class="glyphicon glyphicon-user"></span> Create An Account</a></li>
+				<li><a href="<?php echo BASE_URI; ?>about"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
 			<?php else : ?>
-				<li><a href="find-mentor.php"><span class="glyphicon glyphicon-search"></span> Find a Mentor</a></li>
-				<li><a href="create.php"><span class="glyphicon glyphicon-pencil"></span> Create Topic</a></li>
+				<li><a href="<?php echo BASE_URI; ?>find-mentor"><span class="glyphicon glyphicon-search"></span> Find a Mentor</a></li>
+				<li><a href="<?php echo BASE_URI; ?>create"><span class="glyphicon glyphicon-pencil"></span> Create Topic</a></li>
 				<li><a href="<?php echo $user['username']; ?>"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
 				<!-- Logout Link that acts as form -->
-				<form method="post" action="logout.php" class="inline">
+				<form method="post" action="<?php echo BASE_URI; ?>logout.php" class="inline">
 					<input type="hidden" name="do_logout" value="Logout">
 					<button type="submit" name="do_logout" value="Logout" class="logout-button"><span class="glyphicon glyphicon-log-out"></span> Logout</button>
 				</form>

@@ -2,6 +2,10 @@
 
 // URL Format
 function urlFormat($str) {
+	
+	// Replace space with - for SEO purposes
+	$str = str_replace(' ', '-', $str);
+	
 	// String out whitespace
 	$str = preg_replace('/\s*/', '', $str);
 	
@@ -11,6 +15,11 @@ function urlFormat($str) {
 	// URL Encode
 	$str = urlencode($str);
 	
+	return $str;
+}
+
+function urlUnformat($str) {
+	$str = str_replace('-', ' ', $str);
 	return $str;
 }
 

@@ -20,9 +20,7 @@ if (!isset($_GET['username'])){
 
 	// Assign vars
 	$template->title = $username."'s Profile";
-	if (!$template->thisProfile = $user->getUserData($username)) {
-		redirect('index.php', "We don't know anybody with that username. Make sure your spelling is correct and try again.", 'error');
-	}
+	$template->thisProfile = $user->getUserData($username);
 
 	if (isLoggedIn()) {
 		$template->user = getUser();

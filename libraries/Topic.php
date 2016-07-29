@@ -28,7 +28,7 @@ class Topic {
 	}
 	
 	// Get topics by category 
-	public function getByCategory($category_id) {
+	public function getByCategory($category_name) {
 		$this->db->query("SELECT topics.*,  
 						  users.username, 
 						  users.avatar, 
@@ -39,9 +39,9 @@ class Topic {
 						  ON topics.category_id = categories.id
 						  INNER JOIN users
 						  ON topics.user_id = users.id
-						  WHERE topics.category_id = :category_id
+						  WHERE categories.name = :category_name
 		");
-		$this->db->bind(':category_id', $category_id);
+		$this->db->bind(':category_name', $category_name);
 		
 		// Assign result set
 		$results = $this->db->resultset();
@@ -49,10 +49,10 @@ class Topic {
 		return $results;
 	}
 	
-	// Get category by ID
-	public function getCategory($category_id) {
-		$this->db->query("SELECT * FROM categories WHERE id = :category_id");
-		$this->db->bind(':category_id', $category_id);
+	// Get category by name
+	public function getCategory($category_name) {
+		$this->db->query("SELECT * FROM categories WHERE name = :category_name");
+		$this->db->bind(':category_name', $category_name);
 		
 		// Assign rowCount
 		$row = $this->db->single();
@@ -61,7 +61,7 @@ class Topic {
 	}
 	
 	// Get topics by username
-	public function getByUser($user_id) {
+	public function getByUser($username) {
 		$this->db->query("SELECT topics.*,
 						  users.username,
 						  users.avatar,
@@ -72,9 +72,9 @@ class Topic {
 						  ON topics.category_id = categories.id
 						  INNER JOIN users
 						  ON topics.user_id = users.id
-						  WHERE topics.user_id = :user_id
+						  WHERE users.username = :username
 		");
-		$this->db->bind(':user_id', $user_id);
+		$this->db->bind(':username', $username);
 		
 		// Assign result set
 		$results = $this->db->resultset();

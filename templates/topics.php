@@ -12,10 +12,10 @@
 					</div>
 					<div class="col-md-10">
 						<div class="topic-content">
-							<h3><a href="topic.php?id=<?php echo $topic->id; ?>"><?php echo $topic->title; ?></a></h3>
+							<h3><a href="<?php echo BASE_URI; ?>topic.php?id=<?php echo $topic->id; ?>"><?php echo $topic->title; ?></a></h3>
 							<div class="topic-info">
-								<a href="topics.php?category=<?php echo urlFormat($topic->category_id); ?>"><?php echo $topic->name; ?></a> >> 
-								<a href="topics.php?user=<?php echo urlFormat($topic->user_id); ?>"><?php echo $topic->username; ?></a> >>
+								<a href="<?php echo BASE_URI; ?>topics/category/<?php echo urlFormat($topic->name); ?>"><?php echo $topic->name; ?></a> >> 
+								<a href="<?php echo BASE_URI; ?>topics/user/<?php echo urlFormat($topic->username); ?>"><?php echo $topic->username; ?></a> >>
 								<?php echo formatDate($topic->create_date); ?>
 								<span class="badge pull-right"><?php echo replyCount($topic->id); ?></span>
 							</div>
