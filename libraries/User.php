@@ -14,8 +14,8 @@ class User {
 	public function register($data) {
 		
 		// Insert query
-		$this->db->query('INSERT INTO users (name, email, avatar, username, password, about, last_activity) 
-						  VALUES (:name, :email, :avatar, :username, :password, :about, :last_activity)');
+		$this->db->query('INSERT INTO users (name, email, avatar, username, password, about, location, last_activity) 
+						  VALUES (:name, :email, :avatar, :username, :password, :about, :location, :last_activity)');
 						  
 		// Bind values
 		$this->db->bind(':name', $data['name']);
@@ -24,6 +24,7 @@ class User {
 		$this->db->bind(':username', $data['username']);
 		$this->db->bind(':password', $data['password']);
 		$this->db->bind(':about', $data['about']);
+		$this->db->bind(':location', $data['location']);
 		$this->db->bind(':last_activity', $data['last_activity']);
 		
 		

@@ -10,7 +10,9 @@
 	
 	</div> <!-- end block from header -->
 	
-	<div class="block"></div>
+	<div class="block">
+	
+	</div>
 
 
 <?php include('includes/footerNoBlock.php'); ?>

@@ -22,6 +22,9 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="<?php echo BASE_URI; ?>templates/js/bootstrap.js"></script>
 	<script src="<?php echo BASE_URI; ?>templates/js/ckeditor/ckeditor.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+
 
 	<?php
 	// Check if title is set, if not then assign it to default
