@@ -4,7 +4,7 @@
 <form role="form" method="post" action="create.php">
 	<div class="form-group">
 		<label>Topic Title</label>
-		<input type="text" class="form-control" name="title" placeholder="Enter Post Title">
+		<input type="text" class="form-control" name="title" placeholder="Enter Topic Title">
 	</div>
 	<div class="form-group">
 		<label>Category</label>

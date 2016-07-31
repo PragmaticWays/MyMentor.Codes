@@ -24,7 +24,7 @@ if(isset($_POST['do_create'])) {
 	$field_array = array('title', 'body', 'category');
 	
 	if ($validate->isRequired($field_array)) {
-		if ($validate->validTitle($field_array['title'])) {
+		if ($validate->validTitle($data['title'])) {
 			if ($topic->create($data)) {
 				redirect('./', 'Your topic has been successfully posted.', 'success');
 			} else {

@@ -7,6 +7,7 @@ RewriteRule	   ^register$             register.php			  [NC,L]	# take out .php ex
 RewriteRule	   ^create$               create.php			  [NC,L]	# take out .php extention
 RewriteRule	   ^find-mentor$          find-mentor.php		  [NC,L]	# take out .php extention 
 RewriteRule	   ^topics$          	  topics.php		      [NC,L]	# take out .php extention 
+RewriteRule	   ^login$          	  login.php		      	  [NC,L]	# take out .php extention 
 
 # Rewrite topics page by category
 RewriteRule    ^topics/([A-Za-z0-9-]+)/?$    topics.php?category=$1    [NC,L]

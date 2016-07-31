@@ -13,6 +13,30 @@ function replyCount($topic_id) {
 	return $db->rowCount();
 }
 
+function likeCount($topic_id) {
+	$db = new Database();
+	$db->query('SELECT * FROM likes WHERE topic_id = :topic_id AND status = "1"');
+	$db->bind(':topic_id', $topic_id);
+	
+	// Assign rows
+	$rows = $db->resultset();
+	
+	// Get count
+	return $db->rowCount();
+}
+
+function dislikeCount($topic_id) {
+	$db = new Database();
+	$db->query('SELECT * FROM likes WHERE topic_id = :topic_id AND status = "0"');
+	$db->bind(':topic_id', $topic_id);
+	
+	// Assign rows
+	$rows = $db->resultset();
+	
+	// Get count
+	return $db->rowCount();
+}
+
 // Get categories for sidebar
 function getCategories() {
 	$db = new Database();

@@ -15,11 +15,11 @@
 								<?php echo getUser()['username']; ?>
 							</div>
 							<br>
-							<form role="form" method="post" action="logout.php">
+							<form role="form" method="post" action="<?php echo BASE_URI; ?>logout.php">
 								<input type="submit" name="do_logout" class="btn btn-primary" value="Logout">
 							</form>
 						<?php else : ?>
-						<form role="form" method="post" action="login.php">
+						<form role="form" method="post" action="<?php echo BASE_URI; ?>logging_in.php">
 							<div class="form-group">
 								<label>Username</label>
 								<input name="username" type="text" class="form-control" placeholder="Username"></input>
@@ -28,7 +28,7 @@
 								<label>Password</label>
 								<input name="password" type="password" class="form-control" id="testPass" placeholder="Password"></input>
 							</div>
-							<button name="do_login" type="submit" class="btn btn-primary">Login</button> <a class="btn btn-default" href="register.php">Create Account</a>
+							<button name="do_login" type="submit" class="btn btn-primary">Login</button> <a class="btn btn-default" href="<?php echo BASE_URI; ?>register.php">Create Account</a>
 						</form>
 						<?php endif; ?>
 						

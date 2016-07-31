@@ -47,7 +47,8 @@ $template->topic = $topic->getTopic(urlUnformat($topic_title));
 
 $topic_id = $topic->getTopic(urlUnformat($topic_title))->id;
 $template->replies = $topic->getReplies($topic_id);
-$template->title = urlUnformat($topic_title);
+$thisTopic = $topic->getTopic(urlUnformat($topic_title));
+$template->title = $thisTopic->title;
 
 if (isLoggedIn()) {
 	$template->user = getUser();

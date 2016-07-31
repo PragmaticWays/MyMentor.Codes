@@ -90,11 +90,46 @@ class Validator{
 	
 	// Check if valid topic title
 	public function validTitle($title) {
-		$prohibitedChars = array('"',"'",'@','#','$','%','^','&','*','<','>','`','+','=','~');
-		if (preg_grep( "/$title/i" , $prohibitedChars )) {
-			return false;
-		} else {
+		if (preg_match("/^[a-zA-Z0-9 -?!]+$/", $title)) {
 			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	// Check if user has liked this topic
+	public function userNotLikeTopic($topic_id) {
+		$this->db->query("SELECT * FROM likes WHERE topic_id = :topic_id AND user_id = :user_id AND status = '1'");
+		
+		// Bind values
+		$this->db->bind(':topic_id', $topic_id);
+		$this->db->bind(':user_id', getUser()['user_id']);
+		
+		// Assign
+		$result = $this->db->single();
+		
+		if(!$result) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	// Check if user has liked this topic
+	public function userNotDislikeTopic($topic_id) {
+		$this->db->query("SELECT * FROM likes WHERE topic_id = :topic_id AND user_id = :user_id AND status = '0'");
+		
+		// Bind values
+		$this->db->bind(':topic_id', $topic_id);
+		$this->db->bind(':user_id', getUser()['user_id']);
+		
+		// Assign
+		$result = $this->db->single();
+		
+		if(!$result) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 	

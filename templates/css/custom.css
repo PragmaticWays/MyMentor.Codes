@@ -101,6 +101,13 @@ img.avatar {
 	border-radius: 5px;
 }
 
+@media only screen and (max-width: 991px) {
+    img.avatar {
+        width: 25%;
+		margin-right: 10px;
+    }
+}
+
 #main-topic {
 	background: rgba(102, 185, 191, .2);
 	padding: 10px;
@@ -216,12 +223,53 @@ fieldset[disabled] .btn-primary.focus {
 
 .badge {
 	background: #66b9bf;
+	margin: 1px;
+	color: #f1f1ef;
+}
+
+.badge-like {
+	background: #C6EFCE;
+	color: #006100;
+}
+.badge-dislike {
+	background: #FFC7CE;
+	color: #9C0006;
 }
 
 .form-control:focus {   
   border-color: rgba(238, 170, 123, 0.8);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(227, 114, 34, 0.6);
   outline: 0 none;
+}
+
+.topic-links {
+	color: #656565;
+	display: inline;
+	margin-right: 10px;
+}
+
+.thumb-btn-like {
+	background: #C6EFCE;
+	color: #006100;
+	border-radius: 50%;
+	outline: none;
+}
+.thumb-btn-dis {
+	background: #FFC7CE;
+	color: #9C0006;
+	border-radius: 50%;
+}
+
+.thumb-btn-like:focus{ outline-color: #E0F1F2 }
+.thumb-btn-dis:focus{ outline-color: #E0F1F2 }
+
+/* Login Page */
+.login-container {
+	max-width: 400px;
+	margin: 0 auto;
+}
+.btn-social {
+	width: 300px;
 }
 
 /* User profile page */

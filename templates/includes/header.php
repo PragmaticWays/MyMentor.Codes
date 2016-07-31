@@ -13,7 +13,10 @@
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo BASE_URI; ?>templates/css/bootstrap.css" rel="stylesheet">
+	<link href="<?php echo BASE_URI; ?>templates/css/bootstrap-social.css" rel="stylesheet" >
 	
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 
     <!-- Custom styles for this template -->
     <link href="<?php echo BASE_URI; ?>templates/css/custom.css" rel="stylesheet">
@@ -23,7 +26,6 @@
     <script src="<?php echo BASE_URI; ?>templates/js/bootstrap.js"></script>
 	<script src="<?php echo BASE_URI; ?>templates/js/ckeditor/ckeditor.js"></script>
 	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 
 
 	<?php
@@ -57,6 +59,7 @@
             <li><a href="<?php echo BASE_URI; ?>"><span class="glyphicon glyphicon-home"></span> Home</a></li>
 			
 			<?php if(!isLoggedIn()) : ?>
+				<li><a href="<?php echo BASE_URI; ?>login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 				<li><a href="<?php echo BASE_URI; ?>register"><span class="glyphicon glyphicon-user"></span> Create An Account</a></li>
 				<li><a href="<?php echo BASE_URI; ?>about"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
 			<?php else : ?>

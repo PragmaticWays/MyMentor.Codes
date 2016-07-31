@@ -11,14 +11,25 @@
 					
 					<ul>
 						<li><strong><?php echo $topic->username; ?></strong></li>
-						<li><a href="<?php echo BASE_URI . $topic->username; ?>/<?php echo urlFormat($topic->title); ?>"><?php echo userTopicCount($topic->user_id); ?> Posts</a></li>
+						<li><a href="<?php echo BASE_URI . $topic->username; ?>/topics"><?php echo userTopicCount($topic->user_id); ?> Topics</a></li>
+						<li><a href="<?php echo BASE_URI; ?><?php echo $topic->username; ?>/replies"><?php echo userReplyCount($topic->user_id); ?> Replies</a></li>
 					</ul>
 				</div>
-				</a>
+				</a>		
 			</div>
 			<div class="col-md-10">
 				<div class="topic-content pull-left">
+					<strong style="margin-right: 15px; font-size: 20px;"><?php echo $topic->title; ?></strong><?php echo formatDate($topic->create_date); ?>
+					<span class="badge badge-like"><?php echo likeCount($topic->id)." "; ?><span class="glyphicon glyphicon-thumbs-up"></span></span>
+				<span class="badge badge-dislike"><?php echo dislikeCount($topic->id)." "; ?><span class="glyphicon glyphicon-thumbs-down"></span></span><br><br>
 					<?php echo $topic->body; ?>
+					<?php if(isloggedIn()) : ?>
+					<form role="form" method="post" action="<?php echo BASE_URI; ?>likeTopic.php">
+						<input type="hidden" value="<?php echo $topic->id; ?>" name="topic_id" />
+						<button name="like_topic" type="submit" class="btn btn-lg thumb-btn-like"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+						<button name="dislike_topic" type="submit" class="btn btn-lg thumb-btn-dis"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+					</form>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>

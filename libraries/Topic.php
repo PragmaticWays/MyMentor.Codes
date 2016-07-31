@@ -224,5 +224,77 @@ class Topic {
 			return false;
 		}			
 	}
+	
+	// Like topic
+	public function likeTopic($topic_id) {
+		// Insert query
+		$this->db->query("INSERT INTO likes (topic_id, user_id, status)
+								VALUES 	(:topic_id, :user_id, '1')");
+								
+		// Bind values
+		$this->db->bind(':topic_id', $topic_id);
+		$this->db->bind(':user_id', getUser()['user_id']);
+		
+		// Execute
+		if ($this->db->execute()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	// Dislike topic
+	public function dislikeTopic($topic_id) {
+				// Insert query
+		$this->db->query("INSERT INTO likes (topic_id, user_id, status)
+								VALUES 	(:topic_id, :user_id, '0')");
+								
+		// Bind values
+		$this->db->bind(':topic_id', $topic_id);
+		$this->db->bind(':user_id', getUser()['user_id']);
+		
+		// Execute
+		if ($this->db->execute()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	// User Likes topic but previously disliked topic
+	public function likeFromDislike($topic_id) {
+		// Delete Dislike record
+		$this->db->query("DELETE FROM likes WHERE topic_id = :topic_id AND user_id = :user_id AND status = '0'");
+		
+		// Bind values
+		$this->db->bind(':topic_id', $topic_id);
+		$this->db->bind(':user_id', getUser()['user_id']);
+		
+		// Execute
+		if ($this->db->execute()) {
+			$this->likeTopic($topic_id);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	// User Dislikes topic but previously liked topic
+	public function dislikeFromLike($topic_id) {
+		// Delete Dislike record
+		$this->db->query("DELETE FROM likes WHERE topic_id = :topic_id AND user_id = :user_id AND status = '1'");
+		
+		// Bind values
+		$this->db->bind(':topic_id', $topic_id);
+		$this->db->bind(':user_id', getUser()['user_id']);
+		
+		// Execute
+		if ($this->db->execute()) {
+			$this->dislikeTopic($topic_id);
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 ?>
