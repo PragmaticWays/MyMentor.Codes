@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Online Mentorship program for programmers - A place for programmers to learn from and teach each other.">
+    <meta name="description" content="An online mentor program for programmers - A community of programmers, software engineers, and web developers to learn from each other and teach each other.">
     <meta name="author" content="Adam Allard">
+	
+	<meta property="og:title" content="MyMentor.Codes">  
+	<meta property="og:description" content="An online mentor program for programmers - A community of programmers, software engineers, and web developers to learn from each other and teach each other.">
+	<meta property="og:image" content="http://mymentor.codes/img/avatars/gravatar.png">
+	<meta property="og:url" content="http://mymentor.codes">
+    
+	<meta name="twitter:site" content="@mymentorcodes">
+	<meta property="twitter:title" content="MyMentor.Codes">  
+	<meta property="twitter:description" content="An online mentor program for programmers - A community of programmers, software engineers, and web developers to learn from each other and teach each other.">
+	<meta property="twitter:image" content="http://mymentor.codes/img/avatars/gravatar.png">
+	
     <link rel="icon" href="../../favicon.ico">
 
-    <title>MyMentor.Codes</title>
+    <title>MyMentor.Codes | A mentor program for programmers</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo BASE_URI; ?>templates/css/bootstrap.css" rel="stylesheet">
@@ -26,17 +39,13 @@
     <script src="<?php echo BASE_URI; ?>templates/js/bootstrap.js"></script>
 	<script src="<?php echo BASE_URI; ?>templates/js/ckeditor/ckeditor.js"></script>
 	
-
-
 	<?php
 	// Check if title is set, if not then assign it to default
 	if (!isset($title)) {
 		$title = SITE_TITLE; // (SITE_TITLE can be found in config.php)
 	}
 	?>
-	
   </head>
-  
 
   <body>
   <main>
@@ -65,7 +74,7 @@
 			<?php else : ?>
 				<li><a href="<?php echo BASE_URI; ?>find-mentor"><span class="glyphicon glyphicon-search"></span> Find a Mentor</a></li>
 				<li><a href="<?php echo BASE_URI; ?>create"><span class="glyphicon glyphicon-pencil"></span> Create Topic</a></li>
-				<li><a href="<?php echo $user['username']; ?>"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
+				<li><a href="<?php echo BASE_URI; ?><?php echo $user['username']; ?>"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
 				<!-- Logout Link that acts as form -->
 				<form method="post" action="<?php echo BASE_URI; ?>logout.php" class="inline">
 					<input type="hidden" name="do_logout" value="Logout">

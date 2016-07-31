@@ -26,8 +26,10 @@
 					<?php if(isloggedIn()) : ?>
 					<form role="form" method="post" action="<?php echo BASE_URI; ?>likeTopic.php">
 						<input type="hidden" value="<?php echo $topic->id; ?>" name="topic_id" />
-						<button name="like_topic" type="submit" class="btn btn-lg thumb-btn-like"><span class="glyphicon glyphicon-thumbs-up"></span></button>
-						<button name="dislike_topic" type="submit" class="btn btn-lg thumb-btn-dis"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+							<center>
+							<button name="like_topic" type="submit" class="btn btn-lg thumb-btn-like"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+							<button name="dislike_topic" type="submit" class="btn btn-lg thumb-btn-dis"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+							</center>
 					</form>
 					<?php endif; ?>
 				</div>

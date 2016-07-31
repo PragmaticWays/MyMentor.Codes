@@ -203,7 +203,9 @@ fieldset[disabled] .btn-primary.focus {
 
 .block {
 	background: #fff;
-	border-radius: 5px;
+	border-width: 0 1px 1px 0;
+	border-style: solid;
+	border-color: #ccd;
 	padding: 15px 20px;
 	margin-bottom: 20px;
 }
@@ -251,13 +253,17 @@ fieldset[disabled] .btn-primary.focus {
 .thumb-btn-like {
 	background: #C6EFCE;
 	color: #006100;
-	border-radius: 50%;
-	outline: none;
+	border-radius: 25px;
+	height: 50px;
+	width: 25%;
+	margin-right: 20px;
 }
 .thumb-btn-dis {
 	background: #FFC7CE;
 	color: #9C0006;
-	border-radius: 50%;
+	border-radius: 25px;
+	height: 50px;
+	width: 25%;
 }
 
 .thumb-btn-like:focus{ outline-color: #E0F1F2 }
