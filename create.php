@@ -26,15 +26,15 @@ if(isset($_POST['do_create'])) {
 	if ($validate->isRequired($field_array)) {
 		if ($validate->validTitle($data['title'])) {
 			if ($topic->create($data)) {
-				redirect('./', 'Your topic has been successfully posted.', 'success');
+				redirect($_SERVER['HTTP_REFERER'], 'Your topic has been successfully posted.', 'success');
 			} else {
-				redirect('./', 'Something went wrong with your post. Please try again', 'error');
+				redirect($_SERVER['HTTP_REFERER'], 'Something went wrong with your post. Please try again', 'error');
 			}
 		} else {
-			redirect('create.php', 'Your title may only consist of letters, number, -, !, or ?', 'error');
+			redirect('create', 'Your title may only consist of letters, number, -, !, or ?', 'error');
 		}
 	} else {
-		redirect('create.php', 'Please fill in all required fields.', 'error');
+		redirect('create', 'Please fill in all required fields.', 'error');
 	}
 }
 
@@ -44,7 +44,7 @@ $template = new Template('templates/create.php');
 if (isLoggedIn()) {
 		$template->user = getUser();
 	} else {
-		redirect('index.php', 'You must be logged in for that.', 'error');
+		redirect('./', 'You must be logged in for that.', 'error');
 	}
 
 // Display template

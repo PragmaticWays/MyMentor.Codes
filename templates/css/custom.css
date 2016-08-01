@@ -201,6 +201,17 @@ fieldset[disabled] .btn-primary.focus {
 	min-height: 250px;
 }
 
+.tags-block {
+	min-height: 500px;
+}
+
+.user-tags li {
+	display: inline-block;
+	background: rgba(102, 185, 191, .2);
+	padding: 3px;
+	margin: 3px;
+}
+
 .block {
 	background: #fff;
 	border-width: 0 1px 1px 0;

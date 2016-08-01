@@ -44,28 +44,28 @@ if (isset($_POST['register'])) {
 								}
 		
 							if ($user->register($data)) {
-								redirect('index.php', 'You are registered. You may log in.', 'success');
+								redirect('./', 'You are registered. You may log in.', 'success');
 							} else {
-								redirect('index.php', 'Something went wrong with registration. Please try again.', 'error');
+								redirect($_SERVER['HTTP_REFERER'], 'Something went wrong with registration. Please try again.', 'error');
 							}
 						
 						} else {
-							redirect('register.php', "I feel like we've done this kind of thing before. Your email address is already associated with an account.", 'error');
+							redirect($_SERVER['HTTP_REFERER'], "I feel like we've done this kind of thing before. Your email address is already associated with an account.", 'error');
 						}
 					} else {
-						redirect('register.php', 'Great minds think alike. This username is already taken. Please pick a different username.', 'error');
+						redirect($_SERVER['HTTP_REFERER'], 'Great minds think alike. This username is already taken. Please pick a different username.', 'error');
 					}				
 				} else {
-					redirect('register.php', 'Do you get many syntax errors typing that fast? Your passwords do not match.', 'error');
+					redirect($_SERVER['HTTP_REFERER'], 'Do you get many syntax errors typing that fast? Your passwords do not match.', 'error');
 				}
 			} else {
-				redirect('register.php', 'Your username can only consist of letters and numbers.', 'error');
+				redirect($_SERVER['HTTP_REFERER'], 'Your username can only consist of letters and numbers.', 'error');
 			} 
 		}else {
-			redirect('register.php', 'What kind of email address is that? Please use a valid email address.', 'error');
+			redirect($_SERVER['HTTP_REFERER'], 'What kind of email address is that? Please use a valid email address.', 'error');
 		}
 	} else {
-		redirect('register.php', 'Please fill in all required fields.', 'error');
+		redirect($_SERVER['HTTP_REFERER'], 'Please fill in all required fields.', 'error');
 	}
 }
 
@@ -76,6 +76,6 @@ $template = new Template('templates/register.php');
 // Display template
 echo $template;
 } else {
-		redirect('index.php', 'You must log out to register a new account.', 'error');
+		redirect('./', 'You must log out to register a new account.', 'error');
 }
 ?>

@@ -8,9 +8,9 @@
 		
 		
 		if($user->logout()) {
-			redirect('index.php', 'You have successfully logged out', 'success');
+			redirect('./', 'You have successfully logged out', 'success');
 		}
 	} else {
-		redirect('index.php');
+		redirect('./');
 	}
 ?>

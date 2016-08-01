@@ -135,6 +135,29 @@ class User {
 		return $row;
 	}
 	
+	// Add skill tag 
+	public function addTag($tag) {
+		$this->db->query("SELECT * FROM tags WHERE name = :tag");
+		
+		// Bind values
+		$this->db->bind(':tag', $tag);
+		
+		$tag_id = $this->db->single();
+		
+		$this->db->query("INSERT INTO user_tags (user_id, tag_id)
+										VALUES (:user_id, :tag_id)");
+		// Bind values
+		$this->db->bind(':user_id', getUser()['user_id']);
+		$this->db->bind(':tag_id', $tag_id->id);
+		
+		// Execute
+		if ($this->db->execute()) {
+			return true;
+		} else {
+			return false;
+		}		
+	}
+	
 	// User logout
 	public function logout() {
 		unset($_SESSION['is_logged_in']);

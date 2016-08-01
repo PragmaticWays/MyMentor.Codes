@@ -77,3 +77,40 @@ function userReplyCount($user_id) {
 	
 	return $reply_count;
 }
+
+// Get all tags 
+function getTags() {
+	$db = new Database();
+	$db->query('SELECT * FROM tags');
+	
+	// Assign Result Set
+	$results = $db->resultset();
+	
+	return $results;
+}
+
+// Get user's tags
+function getUserTags($username) {
+	$db = new Database();
+	
+	$db->query('SELECT * FROM users WHERE username = :username');
+	
+	// Bind values
+	$db->bind(':username', $username);
+	
+	// Assign
+	$user = $db->single();
+	
+	$db->query('SELECT * FROM user_tags 
+				INNER JOIN tags
+				ON tags.id = user_tags.tag_id
+				WHERE user_id = :user_id');
+	
+	// Bind values
+	$db->bind(':user_id', $user->id);
+	
+	// Assign Result Set
+	$results = $db->resultset();
+
+	return $results;
+}

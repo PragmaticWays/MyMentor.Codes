@@ -12,11 +12,11 @@
 		
 		
 		if($user->login($username, $password)) {
-			redirect('index.php', 'You have been logged in', 'success');
+			redirect($_SERVER['HTTP_REFERER'], 'You have been logged in', 'success');
 		} else {
-			redirect('index.php', 'That login is not valid', 'error');
+			redirect('login', 'That login is not valid', 'error');
 		}
 	} else {
-		redirect('index.php');
+		redirect('./');
 	}
 ?>

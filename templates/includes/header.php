@@ -39,6 +39,7 @@
     <script src="<?php echo BASE_URI; ?>templates/js/bootstrap.js"></script>
 	<script src="<?php echo BASE_URI; ?>templates/js/ckeditor/ckeditor.js"></script>
 	
+	
 	<?php
 	// Check if title is set, if not then assign it to default
 	if (!isset($title)) {

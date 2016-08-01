@@ -30,12 +30,12 @@ if (isset($_POST['do_reply'])) {
 		
 		// Register user
 		if ($topic->reply($data)) {
-			redirect('./'.urlFormat($topic_title), 'You have successfully replied.', 'success');
+			redirect($_SERVER['HTTP_REFERER'], 'You have successfully replied.', 'success');
 		} else {
-			redirect('topic.php?id='.topic_title, 'Something went wrong with your post. Please try again.', 'success');
+			redirect($_SERVER['HTTP_REFERER'], 'Something went wrong with your post. Please try again.', 'error');
 		}
 	} else {
-		redirect('topic.php?id='.topic_title, 'Please try to refrain from leaving a blank reply.', 'success');
+		redirect($_SERVER['HTTP_REFERER'], 'Please try to refrain from leaving a blank reply.', 'error');
 	}
 }
 
