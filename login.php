@@ -1,7 +1,6 @@
 <?php require('core/init.php'); ?>
 <?php
 
-
 // Create topic object
 $topic = new Topic();
 

@@ -61,7 +61,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a id="nav-head-link" class="navbar-brand" href="index.php"><img id="nav-img" class="pull-left"/>MyMentor.Codes</a>
+          <a id="nav-head-link" class="navbar-brand" href="./"><img id="nav-img" class="pull-left"/>MyMentor.Codes</a>
         </div>
 		
         <div id="navbar" class="collapse navbar-collapse">
