@@ -16,7 +16,6 @@ $template = new Template('templates/login.php');
 // Assign vars
 $template->title = "Login";
 
-
 // Display template
 echo $template;
 ?>
